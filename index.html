@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirAware — From Air Quality Data to Everyday Action</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🍃</span>
+                <span class="logo-text">Air<span class="highlight">Aware</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="#dashboard" class="active">Dashboard</a>
+                <a href="#learn">Learn & Meaning</a>
+                <a href="#action-plan">Action Plan</a>
+                <a href="#sources">Sources</a>
+                <a href="#impact">Impact Calculator</a>
+                <a href="#pledge">Clean Air Pledge</a>
+            </nav>
+            <div class="nav-badge">
+                <span class="live-dot"></span> Demo Mode
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-layout">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="demo-notice">
+                    <span class="notice-tag">Notice</span>
+                    Demonstration data — not live monitoring system
+                </div>
+                <h1>From Air Quality Data to <span class="text-gradient">Everyday Action</span></h1>
+                <p class="hero-subtitle">
+                    Empowering individuals across Indian cities with real-time actionable insights, health advisory, and tangible reduction steps against pollution.
+                </p>
+                <div class="hero-actions">
+                    <a href="#dashboard" class="btn btn-primary">Check Today's Air ⚡</a>
+                    <a href="#impact" class="btn btn-secondary">Calculate Your Impact 🧮</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section-card dashboard-card">
+            <div class="section-header">
+                <div>
+                    <h2>Air Quality Dashboard</h2>
+                    <p class="section-desc">Select a major Indian city to inspect live simulated air metrics</p>
+                </div>
+                <div class="city-selector-wrapper">
+                    <label for="city-select">Select City:</label>
+                    <select id="city-select" class="custom-select">
+                        <option value="delhi">Delhi NCR (Severe)</option>
+                        <option value="mumbai">Mumbai (Moderate)</option>
+                        <option value="bengaluru">Bengaluru (Good)</option>
+                        <option value="kolkata">Kolkata (Poor)</option>
+                        <option value="mangaluru" selected>Mangaluru (Satisfactory)</option>
+                        <option value="kanpur">Kanpur (Very Poor)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Main AQI Box -->
+                <div class="aqi-card-main" id="aqi-card-box">
+                    <span class="card-label">Air Quality Index (AQI)</span>
+                    <div class="aqi-val-container">
+                        <span class="aqi-number" id="aqi-value">68</span>
+                        <div class="aqi-meta">
+                            <span class="aqi-status-badge" id="aqi-badge">Satisfactory</span>
+                            <span class="update-time">Updated: Just Now</span>
+                        </div>
+                    </div>
+                    <p class="aqi-summary" id="aqi-summary-text">Air quality is acceptable; however, sensitive individuals may experience minor discomfort.</p>
+                    
+                    <!-- AQI Visual Meter -->
+                    <div class="meter-container">
+                        <div class="meter-bar">
+                            <div class="meter-fill" id="meter-fill" style="width: 13.6%;"></div>
+                        </div>
+                        <div class="meter-labels">
+                            <span>0</span>
+                            <span>50</span>
+                            <span>100</span>
+                            <span>200</span>
+                            <span>300</span>
+                            <span>400+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub Pollutant Breakdown -->
+                <div class="pollutant-grid">
+                    <div class="pollutant-card">
+                        <div class="pollutant-header">
+                            <span class="poll-title">PM2.5</span>
+                            <span class="poll-unit">µg/m³</span>
+                        </div>
+                        <span class="poll-value" id="pm25-val">22</span>
+                        <span class="poll-desc">Fine Inhalable Particles</span>
+                    </div>
+
+                    <div class="pollutant-card">
+                        <div class="pollutant-header">
+                            <span class="poll-title">PM10</span>
+                            <span class="poll-unit">µg/m³</span>
+                        </div>
+                        <span class="poll-value" id="pm10-val">54</span>
+                        <span class="poll-desc">Coarse Dust Particles</span>
+                    </div>
+
+                    <div class="pollutant-card">
+                        <div class="pollutant-header">
+                            <span class="poll-title">NO₂</span>
+                            <span class="poll-unit">ppb</span>
+                        </div>
+                        <span class="poll-value" id="no2-val">18</span>
+                        <span class="poll-desc">Nitrogen Dioxide</span>
+                    </div>
+
+                    <div class="pollutant-card">
+                        <div class="pollutant-header">
+                            <span class="poll-title">Main Contributor</span>
+                        </div>
+                        <span class="poll-value text-sm" id="main-contributor">Vehicular Exhaust</span>
+                        <span class="poll-desc">Primary Local Source</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learn & Meaning Section -->
+        <section id="learn" class="section-card">
+            <div class="section-header">
+                <h2>What Does the AQI Mean?</h2>
+                <p class="section-desc">Demystifying air quality categories established by National Air Quality Standards</p>
+            </div>
+            
+            <div class="aqi-legend-grid">
+                <div class="legend-box border-good">
+                    <span class="legend-badge bg-good">0 - 50</span>
+                    <h3>Good</h3>
+                    <p>Minimal health impact. Air quality is considered satisfactory, and air pollution poses little or no risk.</p>
+                </div>
+                <div class="legend-box border-satisfactory">
+                    <span class="legend-badge bg-satisfactory">51 - 100</span>
+                    <h3>Satisfactory</h3>
+                    <p>Minor breathing discomfort to sensitive people. Moderate quality for the general public.</p>
+                </div>
+                <div class="legend-box border-moderate">
+                    <span class="legend-badge bg-moderate">101 - 200</span>
+                    <h3>Moderate</h3>
+                    <p>May cause breathing discomfort to people with lung/heart disease, children, and older adults.</p>
+                </div>
+                <div class="legend-box border-poor">
+                    <span class="legend-badge bg-poor">201 - 300</span>
+                    <h3>Poor</h3>
+                    <p>Breathing discomfort to most people on prolonged exposure. Limit outdoor exertion.</p>
+                </div>
+                <div class="legend-box border-verypoor">
+                    <span class="legend-badge bg-verypoor">301 - 400</span>
+                    <h3>Very Poor</h3>
+                    <p>Respiratory illness on prolonged exposure. Significant risk for individuals with pre-existing conditions.</p>
+                </div>
+                <div class="legend-box border-severe">
+                    <span class="legend-badge bg-severe">401 - 500+</span>
+                    <h3>Severe</h3>
+                    <p>Affects healthy people and seriously impacts those with existing diseases. Emergency health warnings.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Action Plan Section -->
+        <section id="action-plan" class="section-card highlight-box">
+            <div class="section-header">
+                <div>
+                    <span class="pill-badge">Personalized Advisory</span>
+                    <h2>What Should You Do Today?</h2>
+                    <p class="section-desc" id="action-plan-subtitle">Dynamic recommendations based on current AQI in Mangaluru</p>
+                </div>
+            </div>
+
+            <div class="action-cards-container" id="action-cards-grid">
+                <!-- Javascript will inject action cards dynamically based on selected city -->
+            </div>
+        </section>
+
+        <!-- Pollution Sources Section -->
+        <section id="sources" class="section-card">
+            <div class="section-header">
+                <h2>Understanding Pollution Sources</h2>
+                <p class="section-desc">Key drivers behind urban smog and seasonal pollution spikes in India</p>
+            </div>
+
+            <div class="sources-grid">
+                <div class="source-card">
+                    <div class="source-icon">🚗</div>
+                    <h3>Vehicular Emissions</h3>
+                    <p>Old diesel engine exhausts, heavy traffic jams, and unserviced vehicles emit dense particulate matter, CO, and NOx.</p>
+                </div>
+                <div class="source-card">
+                    <div class="source-icon">🏗️</div>
+                    <h3>Construction & Dust</h3>
+                    <p>Uncovered demolition, building projects, and loose roadside dust contribute heavily to coarse PM10 levels.</p>
+                </div>
+                <div class="source-card">
+                    <div class="source-icon">🔥</div>
+                    <h3>Waste Burning</h3>
+                    <p>Open burning of municipal solid waste, plastic debris, and stubble releases toxic fumes and carcinogenic soot into urban air sheds.</p>
+                </div>
+                <div class="source-card">
+                    <div class="source-icon">🏭</div>
+                    <h3>Industrial Smoke</h3>
+                    <p>Power plants, brick kilns, and manufacturing units around city outskirts discharge sulfur dioxide and heavy particulate plumes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clean Air Impact Calculator -->
+        <section id="impact" class="section-card">
+            <div class="section-header">
+                <h2>My Clean Air Impact Calculator</h2>
+                <p class="section-desc">Select daily actions you can commit to and calculate your estimated clean air score.</p>
+            </div>
+
+            <div class="calculator-wrapper">
+                <div class="calc-options">
+                    <label class="checkbox-card">
+                        <input type="checkbox" class="calc-check" value="25" data-title="Walked or cycled for trips under 2 km">
+                        <div class="checkbox-content">
+                            <span class="check-title">🚶 Walker / Cyclist</span>
+                            <span class="check-desc">Walked or cycled for short trips under 2 km instead of driving (+25 pts)</span>
+                        </div>
+                    </label>
+
+                    <label class="checkbox-card">
+                        <input type="checkbox" class="calc-check" value="30" data-title="Used Public Transit or Carpooled">
+                        <div class="checkbox-content">
+                            <span class="check-title">🚌 Transit Champion</span>
+                            <span class="check-desc">Took metro, bus, or shared ride for daily commute (+30 pts)</span>
+                        </div>
+                    </label>
+
+                    <label class="checkbox-card">
+                        <input type="checkbox" class="calc-check" value="20" data-title="Zero Waste Burning">
+                        <div class="checkbox-content">
+                            <span class="check-title">🚮 Waste Steward</span>
+                            <span class="check-desc">Composted dry leaves & avoided burning waste or plastic (+20 pts)</span>
+                        </div>
+                    </label>
+
+                    <label class="checkbox-card">
+                        <input type="checkbox" class="calc-check" value="25" data-title="Planted & Nurtured Urban Greens">
+                        <div class="checkbox-content">
+                            <span class="check-title">🌱 Green Builder</span>
+                            <span class="check-desc">Maintained indoor air-purifying plants (Snake plant, Areca palm) (+25 pts)</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="calc-results-box">
+                    <h3>Your Impact Summary</h3>
+                    <div class="score-display">
+                        <span class="score-num" id="total-score">0</span>
+                        <span class="score-max">/ 100 PTS</span>
+                    </div>
+                    <div class="impact-level" id="impact-level-tag">Getting Started</div>
+                    <p id="impact-feedback" class="impact-feedback-text">Select actions on the left to measure your individual contribution towards clean air.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clean Air Pledge Section -->
+        <section id="pledge" class="section-card pledge-card">
+            <div class="section-header text-center">
+                <h2>Take the Clean Air Citizen Pledge</h2>
+                <p class="section-desc">Join thousands of citizens taking small steps for a healthier, smog-free India.</p>
+            </div>
+
+            <form id="pledge-form" class="pledge-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pledger-name">Full Name</label>
+                        <input type="text" id="pledger-name" class="custom-input" placeholder="e.g. Ananya Sharma" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pledger-city">City</label>
+                        <input type="text" id="pledger-city" class="custom-input" placeholder="e.g. Mangaluru / Delhi" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Choose your primary pledge commitment:</label>
+                    <div class="radio-options">
+                        <label class="radio-label">
+                            <input type="radio" name="pledge_commit" value="Public Transit" checked> Use public transport at least 2 days a week
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="pledge_commit" value="Zero Garbage Burning"> Report and prevent local waste burning
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="pledge_commit" value="Greenery Advocate"> Plant 3 air-purifying saplings this season
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Sign My Clean Air Pledge ✍️</button>
+            </form>
+
+            <div id="pledge-confirmation" class="pledge-confirmation hidden">
+                <div class="conf-icon">🎉</div>
+                <h3>Pledge Confirmed!</h3>
+                <p id="conf-text">Thank you for committing to cleaner air.</p>
+                <div class="pledge-summary-box" id="pledge-summary-box"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-icon">🍃</span> <strong>AirAware</strong>
+                <p>Data-driven civic awareness for clean air in India.</p>
+            </div>
+            <div class="footer-disclaimer">
+                <p><strong>Disclaimer:</strong> This application uses sample/demonstration data for educational and hackathon evaluation purposes. It does not provide real-time regulatory sensors or live AI predictions.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AirAware Project | Designed for Clean Air Initiative</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
